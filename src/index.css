@@ -36,3 +36,56 @@ svg{
   box-shadow: 0 4px 2px -2px #ddd;
 }
 
+.slick-dots{
+  bottom: 5%;
+  width: fit-content;
+  left: 8%;
+  column-gap: 5px;
+  display: flex !important;
+}
+
+.slick-dots li{
+  width: fit-content;
+  height: fit-content;
+  margin: 0;
+}
+
+.slick-dots .slick-active div{
+  width: 24px;
+}
+
+.slick-dots li div{
+  transition: 0.5s all ease;
+}
+
+.slick-arrow{
+  width: 86px;
+  height: 86px;
+  border-radius: 50%;
+  background-color: #F3F9FB;
+  border: 8px solid white;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.slick-arrow svg{
+  display: inline;
+}
+
+.slick-prev{
+  left: -3%;
+}
+
+.slick-next{
+  right: -3%;
+}
+
+.slick-next:focus, .slick-next:hover, .slick-prev:hover, .slick-prev:focus{
+  background: #F3F9FB !important;
+}
+
+.slick-arrow::before{
+  content: none
+}

@@ -1,29 +1,58 @@
-import React from "react";
-import Slider from "react-slick";
+import React from "react"
+import Slider from "react-slick"
+import "slick-carousel/slick/slick.css"
+import "slick-carousel/slick/slick-theme.css"
+import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai"
 
+const SlickArrowLeft = ({ currentSlide, slideCount, ...props }) => (
+	<button
+		{...props}
+		className={"slick-prev slick-arrow" + (currentSlide === 0 ? " slick-disabled" : "")}
+		aria-hidden="true"
+		aria-disabled={currentSlide === 0 ? true : false}
+		type="button"
+	>
+		<AiOutlineLeft />
+	</button>
+)
+const SlickArrowRight = ({ currentSlide, slideCount, ...props }) => (
+	<button
+		{...props}
+		className={"slick-next slick-arrow" + (currentSlide === slideCount - 1 ? " slick-disabled" : "")}
+		aria-hidden="true"
+		aria-disabled={currentSlide === slideCount - 1 ? true : false}
+		type="button"
+	>
+		<AiOutlineRight />
+	</button>
+)
 export const Carousel = () => {
-  const settings = {
-    dots: true,
-    arrows: false,
-    speed: 800,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    pauseOnHover: false,
-    pauseOnFocus: false,
-    appendDots: (dots) => <ul className="slider-dots">{dots}</ul>,
-    customPaging: (slider, i) => {
-      console.log(slider);
-      return (
-        <div className="dot">
-          <div className="inner-dot"></div>
-        </div>
-      );
-    },
-  };
-  return (
-    <div>
-      <h2>Single Item</h2>
-      <Slider {...settings}></Slider>
-    </div>
-  );
-};
+	const settings = {
+		dots: true,
+		infinite: true,
+		speed: 500,
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		customPaging: (slider, i) => {
+			return <div className="w-[8px] h-[8px] bg-white rounded-full"></div>
+		},
+		prevArrow: <SlickArrowLeft/>,
+
+		nextArrow: <SlickArrowRight/>
+	}
+	return (
+		<div className="container mx-auto">
+			<Slider {...settings}>
+				<img src="/carousel_item1.png" className="object-cover" />
+				<img src="/carousel_item1.png" className="object-cover" />
+				<img src="/carousel_item1.png" className="object-cover" />
+				<img src="/carousel_item1.png" className="object-cover" />
+				<img src="/carousel_item1.png" className="object-cover" />
+				<img src="/carousel_item1.png" className="object-cover" />
+				<img src="/carousel_item1.png" className="object-cover" />
+				<img src="/carousel_item1.png" className="object-cover" />
+				<img src="/carousel_item1.png" className="object-cover" />
+			</Slider>
+		</div>
+	)
+}
