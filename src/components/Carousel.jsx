@@ -1,7 +1,8 @@
 import React from "react"
 import Slider from "react-slick"
-import "slick-carousel/slick/slick.css"
-import "slick-carousel/slick/slick-theme.css"
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css"; 
+
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai"
 
 const SlickArrowLeft = ({ currentSlide, slideCount, ...props }) => (
@@ -26,32 +27,26 @@ const SlickArrowRight = ({ currentSlide, slideCount, ...props }) => (
 		<AiOutlineRight />
 	</button>
 )
-export const Carousel = () => {
+
+export const Carousel = ({slidesToShow, slidesToScroll, arrows, children, className}) => {
 	const settings = {
 		dots: true,
 		infinite: true,
 		speed: 500,
-		slidesToShow: 1,
-		slidesToScroll: 1,
+		arrows: arrows, 
+		slidesToShow: slidesToShow,
+		slidesToScroll: slidesToScroll,
 		customPaging: (slider, i) => {
 			return <div className="w-[8px] h-[8px] bg-white rounded-full"></div>
 		},
 		prevArrow: <SlickArrowLeft/>,
-
-		nextArrow: <SlickArrowRight/>
+		nextArrow: <SlickArrowRight/>,
+		className: className
 	}
 	return (
 		<div className="container mx-auto">
-			<Slider {...settings}>
-				<img src="/carousel_item1.png" className="object-cover" />
-				<img src="/carousel_item1.png" className="object-cover" />
-				<img src="/carousel_item1.png" className="object-cover" />
-				<img src="/carousel_item1.png" className="object-cover" />
-				<img src="/carousel_item1.png" className="object-cover" />
-				<img src="/carousel_item1.png" className="object-cover" />
-				<img src="/carousel_item1.png" className="object-cover" />
-				<img src="/carousel_item1.png" className="object-cover" />
-				<img src="/carousel_item1.png" className="object-cover" />
+			<Slider {...settings} >
+				{children}
 			</Slider>
 		</div>
 	)

@@ -8,7 +8,8 @@ module.exports = {
       black: '#000000',
       white: "#ffffff",
       primary: '#008ECC',
-      heading: "#888888;",
+      light: "#888888",
+      heading: "#666666",
       searchBar: "#F3F9FB"
     },
     extend: {
